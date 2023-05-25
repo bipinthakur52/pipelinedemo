@@ -6,6 +6,13 @@ phases:
     commands:
       - pip install -r requirements.txt
       - pip install pytest  # Install pytest
+      - pip install pytest-junit  # Install pytest-junit
   build:
     commands:
-      - pytest tests/*
+      - python -m pytest --junitxml=reports/resport.xml
+reports:
+ pytest_reports:
+   files:
+     - report.xml
+   base-directory: reports
+   file-format: JUNITXML
