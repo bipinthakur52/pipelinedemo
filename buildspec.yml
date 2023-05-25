@@ -8,4 +8,4 @@ phases:
       - pip install pytest  # Install pytest
   build:
     commands:
-      - pytest tests/
+      - pytest tests/*
