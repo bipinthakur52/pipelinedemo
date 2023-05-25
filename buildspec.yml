@@ -8,7 +8,7 @@ phases:
       - pip install pytest  # Install pytest
   build:
     commands:
-      - python -m pytest --junitxml=reports/report.xml
+      - python -m pytest tests/* --junitxml=reports/report.xml
 reports:
  pytest_reports:
    files:
