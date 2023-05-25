@@ -2,4 +2,9 @@ version: 0.0
 os: linux
 files:
   - source: /
-    destination: /home/ubuntu/djangocode/django-helloworld-master2
+    destination: /home/ubuntu/djangocode/django-helloworld-master
+permissions:
+  - object: /home/ubuntu/djangocode/django-helloworld-master
+    pattern: "**"
+    owner: ubuntu
+    group: ubuntu
