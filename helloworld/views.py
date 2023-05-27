@@ -1,4 +1,4 @@
 from django.http import HttpResponse
 
 def index(request):
-    return HttpResponse("Hello, pipelinebipinthakur with testing!")
+    return HttpResponse("Hello, pipelinebipinthakur with testing!"+ os.environ['DBNAME'])
