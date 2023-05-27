@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# Retrieve the branch name from the CodeBuild environment variable
-BRANCH_NAME=$(echo $CODEBUILD_SOURCE_VERSION | awk -F "/" '{print $3}')
-echo "=================== Bipin ======================="
-# Use the branch name in your script
-echo "The branch name is: $BRANCH_NAME"
+parameter_name="/myapp/mykey"
 
-# Additional commands using the branch name
+# Retrieve the parameter value
+parameter_value=$(aws ssm get-parameter --name "$parameter_name" --query "Parameter.Value" --output text)
+
+# Use the parameter value in your script
+echo "Parameter Value: $parameter_value"
