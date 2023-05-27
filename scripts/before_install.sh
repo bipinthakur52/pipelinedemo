@@ -7,3 +7,4 @@ parameter_name="/myapp/mykey"
 echo "Bipin singh"
 # Use the parameter value in your script
 echo "Parameter Value: $dbname"
+export DBNAME=$dbname
