@@ -3,7 +3,7 @@
 parameter_name="/myapp/mykey"
 
 # Retrieve the parameter value
-parameter_value=$(aws ssm get-parameter --name "$parameter_name" --query "Parameter.Value" --output text)
+#parameter_value=$(aws ssm get-parameter --name "$parameter_name" --query "Parameter.Value" --output text)
 
 # Use the parameter value in your script
 echo "Parameter Value: $dbname"
