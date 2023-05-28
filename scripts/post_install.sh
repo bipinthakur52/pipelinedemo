@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -euo pipefail
 # Set the BASEDIR variable
 BASEDIR="/home/ubuntu/djangocode/django-helloworld-master/"
 cd "$BASEDIR"
