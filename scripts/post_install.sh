@@ -14,4 +14,4 @@ source "${BASEDIR}env/bin/activate"
 cd "$BASEDIR"
 echo "Yes"
 # Install required packages
-pip install -r requirements.txt  --yes
+pip install -r requirements.txt
