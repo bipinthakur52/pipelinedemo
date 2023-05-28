@@ -7,7 +7,7 @@ cd "$BASEDIR"
 sudo apt-get install python3.9 -y
 
 # Create and activate virtual environment
-python3.9 -m venv env
+python3 -m venv env
 source "${BASEDIR}env/bin/activate"
 
 # Change to the source code directory
