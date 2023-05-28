@@ -14,4 +14,5 @@ python manage.py makemigrations
 python manage.py migrate
 
 # Restart Gunicorn (assuming it's managed by systemd)
-sudo systemctl restart gunicorn
+#sudo systemctl restart gunicorn
+sudo systemctl restart my-django.service
