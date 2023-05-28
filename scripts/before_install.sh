@@ -1,6 +1,18 @@
 #!/bin/bash
 set -euo pipefail
 MODULE_NAME="DASHBOARD"
+
+success=true
+
+# Function to check if the ssm key access was successfull
+check_command_status() {
+    if [ $? -ne 0 ]; then
+        echo "Error executing command: $1"
+        success=false
+    fi
+}
+
+
 # Retrieve the values of the variables from Parameter Store
 LAMBDA_SQL_ENGINE=$(aws ssm get-parameter --name "/$MODULE_NAME/$DEPLOYMENT_GROUP_NAME/LAMBDA_SQL_ENGINE" --query 'Parameter.Value' --output text --region "us-east-1")
 #LAMBDA_SQL_DATABASE=$(aws ssm get-parameter --name "/$MODULE_NAME/$DEPLOYMENT_GROUP_NAME/LAMBDA_SQL_DATABASE" --query 'Parameter.Value' --output text --region "us-east-1")
@@ -22,7 +34,13 @@ LAMBDA_SQL_ENGINE=$(aws ssm get-parameter --name "/$MODULE_NAME/$DEPLOYMENT_GROU
 #ROI_EC2=$(aws ssm get-parameter --name "/$MODULE_NAME/$DEPLOYMENT_GROUP_NAME/ROI_EC2" --query 'Parameter.Value' --output text --region "us-east-1")
 #KAFKA_EC2=$(aws ssm get-parameter --name "/$MODULE_NAME/$DEPLOYMENT_GROUP_NAME/KAFKA_EC2" --query 'Parameter.Value' --output text --region "us-east-1")
 
+# Check if all the commands were successful
+check_command_status "aws ssm get-parameter"
+
+
 # Create and populate the environment file
+# Proceed only if all commands were successful
+if [ "$success" = true ]; then
 cat << EOF > /home/ubuntu/djangocode/django-helloworld-master/.env
 LAMBDA_SQL_ENGINE=$LAMBDA_SQL_ENGINE
 LAMBDA_SQL_DATABASE=$DEPLOYMENT_GROUP_NAME
@@ -47,5 +65,6 @@ EOF
 
 #change ownership of .env file file
 chown ubuntu /home/ubuntu/djangocode/django-helloworld-master/.env
-
-# Use the environment file in your deployment
+else
+    echo "One or more commands failed. Aborting the script."
+fi
