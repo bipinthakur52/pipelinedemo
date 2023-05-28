@@ -23,7 +23,7 @@ LAMBDA_SQL_ENGINE=$(aws ssm get-parameter --name "/$MODULE_NAME/$DEPLOYMENT_GROU
 
 # Create and populate the environment file
 cat << EOF > /home/ubuntu/djangocode/django-helloworld-master/.env
-LAMBDA_SQL_ENGINE=$DEPLOYMENT_GROUP_NAME
+LAMBDA_SQL_ENGINE=$LAMBDA_SQL_ENGINE
 LAMBDA_SQL_DATABASE=$DEPLOYMENT_GROUP_NAME
 LAMBDA_SQL_USER=$DEPLOYMENT_GROUP_NAME
 LAMBDA_SQL_PASSWORD=$DEPLOYMENT_GROUP_NAME
@@ -43,5 +43,8 @@ DATABASE_EC2=$DEPLOYMENT_GROUP_NAME
 ROI_EC2=$DEPLOYMENT_GROUP_NAME
 KAFKA_EC2=$DEPLOYMENT_GROUP_NAME
 EOF
+
+#change ownership of .env file file
+chown ubuntu /home/ubuntu/djangocode/django-helloworld-master/.env
 
 # Use the environment file in your deployment
