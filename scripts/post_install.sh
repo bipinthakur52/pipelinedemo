@@ -4,7 +4,7 @@ set -euo pipefail
 BASEDIR="/home/ubuntu/djangocode/django-helloworld-master/"
 cd "$BASEDIR"
 # Install Python 3.9
-sudo apt-get install python3.9
+sudo apt-get install python3.9 -y
 
 # Create and activate virtual environment
 python3.9 -m venv env
