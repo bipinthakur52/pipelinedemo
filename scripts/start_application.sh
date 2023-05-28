@@ -5,13 +5,13 @@ BASEDIR="/home/ubuntu/djangocode/django-helloworld-master/"
 # Change to the BASEDIR
 cd "$BASEDIR"
 # Clear static files
-python manage.py collectstatic --clear --no-input
+python3 manage.py collectstatic --clear --no-input
 
 # Make migrations
-python manage.py makemigrations
+python3 manage.py makemigrations
 
 # Apply migrations
-python manage.py migrate
+python3 manage.py migrate
 
 # Restart Gunicorn (assuming it's managed by systemd)
 #sudo systemctl restart gunicorn
