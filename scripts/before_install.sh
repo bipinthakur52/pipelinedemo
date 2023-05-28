@@ -22,7 +22,7 @@ ROI_EC2=$(aws ssm get-parameter --name "/$MODULE_NAME/$DEPLOYMENT_GROUP_NAME/ROI
 KAFKA_EC2=$(aws ssm get-parameter --name "/$MODULE_NAME/$DEPLOYMENT_GROUP_NAME/KAFKA_EC2" --query 'Parameter.Value' --output text)
 
 # Create and populate the environment file
-cat << EOF > env.txt
+cat << EOF > /home/ubuntu/djangocode/django-helloworld-master/.env
 LAMBDA_SQL_ENGINE=$LAMBDA_SQL_ENGINE
 LAMBDA_SQL_DATABASE=$LAMBDA_SQL_DATABASE
 LAMBDA_SQL_USER=$LAMBDA_SQL_USER
