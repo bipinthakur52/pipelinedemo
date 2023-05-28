@@ -12,6 +12,6 @@ source "${BASEDIR}env/bin/activate"
 
 # Change to the source code directory
 cd "$BASEDIR"
-
+echo "Yes"
 # Install required packages
 pip install -r requirements.txt  --yes
