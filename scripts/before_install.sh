@@ -1,4 +1,5 @@
 #!/bin/bash
+set -euo pipefail
 MODULE_NAME="DASHBOARD"
 # Retrieve the values of the variables from Parameter Store
 LAMBDA_SQL_ENGINE=$(aws ssm get-parameter --name "/$MODULE_NAME/$DEPLOYMENT_GROUP_NAME/LAMBDA_SQL_ENGINE" --query 'Parameter.Value' --output text --region "us-east-1")
